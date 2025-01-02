@@ -29,7 +29,7 @@ const sendEmail = async(req, res) => {
 
             const emailMessage = {
                 from: '"KLABSEN" <no-replay@kopkarla.co.id>',
-                to: 'ara.fa@kopkarla.co.id',
+                to: findDataEmail.to,
                 subject: findDataEmail.subject,
                 text: findDataEmail.text_email
             };
