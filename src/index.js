@@ -5,10 +5,13 @@ const session = require('express-session');
 const fileUpload = require('express-fileupload')
 const SequelizeStore = require('connect-session-sequelize');
 const db = require('./models/index.js');
+const cron = require('node-cron');
 
 dotenv.config();
 
 const app = express();
+
+const {sendEmail} = require('./controllers/email.controller.js')
 
 const sessionStore = SequelizeStore(session.Store);
 
@@ -38,7 +41,10 @@ app.use(fileUpload());
 //setup public folder
 app.use(express.static('public'));
 
-//router
+//cron
+cron.schedule(process.env.CRON_TIME, function() {
+    sendEmail();
+});
 
 app.listen(process.env.BACKEND_PORT, ()=>{
     console.log(`server running at port ${process.env.BACKEND_PORT}`);

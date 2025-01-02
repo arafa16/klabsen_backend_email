@@ -16,7 +16,7 @@ module.exports = {
       {
         id:2,
         uuid:'25547b22-82ae-497d-84a7-5a85cddc8210',
-        name:'send',
+        name:'process',
         code:2,
         is_active:true,
         created_at: new Date(),
